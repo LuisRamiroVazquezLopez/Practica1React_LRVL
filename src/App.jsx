@@ -1,34 +1,44 @@
 import "./App.css";
+import Tarjeta from "./Tarjeta";
 
 function App() {
-  const nombre = "Ramiro";
-  const carrera = "Ingeniería en Sistemas";
-  const edad = 20;
-
-  const mensaje = edad >= 18 ? "Eres mayor de edad" : "Eres menor de edad";
+  
+  //arreglo de objetos
+  const personas = [
+    {
+      nombre: "Ramiro",
+      carrera: "Ingeniería en Software",
+      edad: 21,
+      imagen: "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+      nombre: "Karla",
+      carrera: "Médico Cirujano",
+      edad: 19,
+      imagen: "https://randomuser.me/api/portraits/women/2.jpg"
+    },
+    {
+      nombre: "Eliseo",
+      carrera: "Arquitectura",
+      edad: 17,
+      imagen: "https://randomuser.me/api/portraits/men/3.jpg"
+    }
+  ];
 
   return (
-    <div className =  "contenedor">
-      <div className= "tarjeta">
-        <h1 >Mi perfil</h1>
+    <div className="contenedor">
 
-        <img
-          src="/imagenes/yo.png"
-          alt="Mi foto"
-          className = "imagen"
-        />
-
-        <p>
-          <strong>Nombre:</strong> {nombre}
-        </p>
-        <p >
-          <strong>Carrera:</strong> {carrera}
-        </p>
-        <p >
-          <strong>Edad:</strong> {edad}
-        </p>
-        <p >{mensaje}</p>
-      </div>
+      {
+        personas.map((persona, index) => (
+          <Tarjeta
+            key={index}
+            nombre={persona.nombre}
+            carrera={persona.carrera}
+            edad={persona.edad}
+            imagen={persona.imagen}
+          />
+        ))
+      }
     </div>
   );
 }
